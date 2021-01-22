@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "baseUrl": "./packages",
+    "declaration": true,
+    "target": "es2015",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "lib": ["ESNext", "DOM"],
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "stripInternal": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "plugins": [
+      {
+        "name": "typescript-eslint-language-service"
+      }
+    ],
+    "rootDir": "src",
+    "outDir": "lib"
+  },
+  "exclude": ["lib"]
+}
