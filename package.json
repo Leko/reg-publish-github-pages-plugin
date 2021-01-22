@@ -1,0 +1,16 @@
+{
+  "name": "reg-publish-github-pages-plugin",
+  "version": "0.0.0",
+  "description": "A reg-suit plugin to publish reports on GitHub pages",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run clean:e2e && ts-node e2e/script.ts"
+  },
+  "repository": "Leko/reg-publish-github-pages-plugin",
+  "keywords": [
+    "reg",
+    "reg-suit-plugin"
+  ],
+  "author": "Leko <leko.noor@gmail.com>",
+  "license": "MIT"
+}
