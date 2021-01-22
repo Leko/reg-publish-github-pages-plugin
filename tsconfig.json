@@ -22,5 +22,5 @@
     "rootDir": "src",
     "outDir": "lib"
   },
-  "exclude": ["lib"]
+  "exclude": ["lib", "e2e"]
 }
