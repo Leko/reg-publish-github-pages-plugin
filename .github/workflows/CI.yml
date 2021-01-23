@@ -1,0 +1,11 @@
+on: [push, pull_request]
+
+steps:
+  - uses: actions/checkout@v2
+  - uses: actions/setup-node@v2
+    with:
+      node-version: "14"
+  - run: yarn
+  - run: yarn lint
+  - run: yarn prepublish
+  - run: yarn test
