@@ -18,9 +18,6 @@
       {
         "name": "typescript-eslint-language-service"
       }
-    ],
-    "rootDir": "src",
-    "outDir": "lib"
-  },
-  "exclude": ["lib", "e2e"]
+    ]
+  }
 }
