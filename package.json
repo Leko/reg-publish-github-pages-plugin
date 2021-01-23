@@ -4,7 +4,7 @@
   "description": "A reg-suit plugin to publish reports on GitHub pages",
   "main": "index.js",
   "scripts": {
-    "prepublish": "tsc -p tsconfig.json",
+    "prepublish": "tsc -p tsconfig.build.json",
     "clean:e2e": "rimraf e2e/report-fixture-expected",
     "lint": "eslint \"./{src,e2e}/**/*.{ts,tsx}\"",
     "test": "npm run clean:e2e && ts-node e2e/script.ts"
