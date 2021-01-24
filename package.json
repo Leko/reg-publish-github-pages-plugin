@@ -5,6 +5,13 @@
   },
   "version": "0.0.2",
   "description": "A reg-suit plugin to publish reports on GitHub pages",
+  "repository": "Leko/reg-publish-github-pages-plugin",
+  "author": "Leko <leko.noor@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "reg",
+    "reg-suit-plugin"
+  ],
   "main": "lib/index.js",
   "files": [
     "lib"
@@ -16,13 +23,6 @@
     "test": "npm run clean:e2e && ts-node e2e/script.ts",
     "reg": "reg-suit run --verbose"
   },
-  "repository": "Leko/reg-publish-github-pages-plugin",
-  "keywords": [
-    "reg",
-    "reg-suit-plugin"
-  ],
-  "author": "Leko <leko.noor@gmail.com>",
-  "license": "MIT",
   "dependencies": {
     "@octokit/rest": "^18.0.12",
     "download": "^8.0.0",
