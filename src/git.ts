@@ -83,24 +83,35 @@ export class GitUtil {
   }
 
   async listRemoteFiles({ prefix }: { prefix: string }): Promise<ObjectListResult> {
-    const res = await this._octokit.request("GET /repos/{owner}/{repo}/contents/{path}", {
-      owner: this._owner,
-      repo: this._repo,
-      ref: this._branchName,
-      path: prefix,
-    });
-    if (!Array.isArray(res.data)) {
-      throw new Error(`${prefix} must be a directory`);
-    }
+    try {
+      const res = await this._octokit.request("GET /repos/{owner}/{repo}/contents/{path}", {
+        owner: this._owner,
+        repo: this._repo,
+        ref: this._branchName,
+        path: prefix,
+      });
+      if (!Array.isArray(res.data)) {
+        throw new Error(`${prefix} must be a directory`);
+      }
 
-    return {
-      isTruncated: false,
-      contents: res.data
-        .filter(f => f.type === "file")
-        .map(f => ({
-          key: f.path,
-        })),
-    };
+      return {
+        isTruncated: false,
+        contents: res.data
+          .filter(f => f.type === "file")
+          .map(f => ({
+            key: f.path,
+          })),
+      };
+    } catch (e) {
+      if (e.status === 404) {
+        return {
+          isTruncated: false,
+          contents: [],
+        };
+      }
+
+      throw e;
+    }
   }
 
   async getDownloadUrl({ path }: { path: string }): Promise<string> {

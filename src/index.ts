@@ -1,10 +1,10 @@
 import { PublisherPluginFactory } from "reg-suit-interface";
 import { GithubPagesPublisherPlugin } from "./github-pages-publisher-plugin";
-// import { S3BucketPreparer } from "./s3-bucket-preparer";
+import { GithubRepositoryPreparer } from "./github-repository-preparer";
 
 const pluginFactory: PublisherPluginFactory = () => {
   return {
-    // preparer: new S3BucketPreparer(),
+    preparer: new GithubRepositoryPreparer(),
     publisher: new GithubPagesPublisherPlugin(),
   };
 };

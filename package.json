@@ -1,21 +1,27 @@
 {
-  "name": "@lekoleko/reg-publish-github-pages-plugin",
-  "version": "0.0.0",
+  "name": "reg-publish-github-pages-plugin",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "0.0.2",
   "description": "A reg-suit plugin to publish reports on GitHub pages",
-  "main": "index.js",
+  "repository": "Leko/reg-publish-github-pages-plugin",
+  "author": "Leko <leko.noor@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "reg",
+    "reg-suit-plugin"
+  ],
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "prepublish": "tsc -p tsconfig.build.json",
     "clean:e2e": "rimraf e2e/report-fixture-expected",
     "lint": "eslint \"./{src,e2e}/**/*.{ts,tsx}\"",
     "test": "npm run clean:e2e && ts-node e2e/script.ts"
   },
-  "repository": "Leko/reg-publish-github-pages-plugin",
-  "keywords": [
-    "reg",
-    "reg-suit-plugin"
-  ],
-  "author": "Leko <leko.noor@gmail.com>",
-  "license": "MIT",
   "dependencies": {
     "@octokit/rest": "^18.0.12",
     "download": "^8.0.0",
