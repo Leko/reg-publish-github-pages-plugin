@@ -31,9 +31,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: "14"
-      - run: yarn && yarn prepublish
-      - run: cp -R lib node_modules/@lekoleko/reg-publish-github-pages-plugin/lib
-      - run: ls -la node_modules/@lekoleko/reg-publish-github-pages-plugin/lib
+      - run: yarn
       - run: yarn reg
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
