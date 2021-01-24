@@ -15,7 +15,7 @@ const SHA1_EMPTY_TREE = "4b825dc642cb6eb9a060e54bf8d69288fbee4904";
 const getIsomorphicGitOptions = (token: string) => ({
   fs,
   http,
-  onAuth: () => ({ username: "Leko", password: token }),
+  onAuth: () => ({ username: token }),
   headers: {
     // GitHub uses user-agent sniffing for git/* and changes its behavior which is frustrating
     "user-agent": "git/reg-publish-github-pages-plugin",
@@ -137,17 +137,13 @@ export class GitUtil {
       dir: repositoryDir,
     };
 
+    const me = await this.getMe();
+    const author = { email: me.email ?? undefined, name: me.login };
     const message = `Add ${key}`;
     await git.commit({
       ...repo,
-      author: {
-        name: "Leko",
-        email: "leko.noor@gmail.com",
-      },
-      committer: {
-        name: "Leko",
-        email: "leko.noor@gmail.com",
-      },
+      author,
+      committer: author,
       message,
     });
     this._logger.verbose(`Commited: ${message}`);
@@ -174,5 +170,10 @@ export class GitUtil {
       ref: `refs/heads/${this._branchName}`,
       sha: res.data.sha,
     });
+  }
+
+  async getMe() {
+    const { data } = await this._octokit.request("GET /user");
+    return data;
   }
 }
