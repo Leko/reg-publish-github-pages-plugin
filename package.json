@@ -1,5 +1,5 @@
 {
-  "name": "@lekoleko/reg-publish-github-pages-plugin",
+  "name": "reg-publish-github-pages-plugin",
   "publishConfig": {
     "access": "public"
   },
