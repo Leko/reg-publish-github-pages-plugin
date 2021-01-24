@@ -5,7 +5,7 @@
   },
   "version": "0.0.1",
   "description": "A reg-suit plugin to publish reports on GitHub pages",
-  "main": "index.js",
+  "main": "lib/index.js",
   "files": [
     "lib"
   ],
