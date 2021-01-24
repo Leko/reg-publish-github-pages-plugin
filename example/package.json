@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "reg": "reg-suit run"
+    "reg": "reg-suit run --verbose"
   },
   "author": "Leko <leko.noor@gmail.com>",
   "license": "MIT",
