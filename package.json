@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A reg-suit plugin to publish reports on GitHub pages",
   "repository": "Leko/reg-publish-github-pages-plugin",
   "author": "Leko <leko.noor@gmail.com>",
