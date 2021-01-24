@@ -28,6 +28,14 @@ You need to configure GitHub pages before using this plugin.
 
 - `repository` - _Required_ - A repository name in the form of `owner/name` such as `Leko/reg-publish-github-pages-plugin`.
 - `branchName` - _Required_ - A branch name for the GitHub pages.
-- `token` - _Required_ - A GitHub token. You can pass the value via [Embed environment values](https://github.com/reg-viz/reg-suit#embed-environment-values)
+- `token` - _Required_ - A GitHub token. The token must have `user:email` and `public_repo` permission. When the repository is private, the token requires `repo` permission instead of `public_repo`.
 - `customDomain` - _Optional_ - A custom domain when you set it to the GitHub pages.
 - `pathPrefix` - _Optional_ - Specify paths. For example, when you set `some_dir` as this property, this plugin will publish with URL such as `https://{TODO}/some_dir/index.html`.
+
+## See also
+
+- [Embed environment values](https://github.com/reg-viz/reg-suit#embed-environment-values)
+
+## LICENSE
+
+This repository is under [MIT](./LICENSE) license.

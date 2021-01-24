@@ -23,7 +23,7 @@ jobs:
       - run: yarn
       - run: yarn test
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.REG_NOTIFY_GITHUB_PLUGIN_GITHUB_TOKEN }}
   example:
     runs-on: ubuntu-latest
     steps:
@@ -38,5 +38,5 @@ jobs:
       - run: yarn && yarn prepublish
       - run: cd example && yarn && yarn reg
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.REG_NOTIFY_GITHUB_PLUGIN_GITHUB_TOKEN }}
           REG_NOTIFY_GITHUB_PLUGIN_CLIENT_ID: ${{ secrets.REG_NOTIFY_GITHUB_PLUGIN_CLIENT_ID }}
