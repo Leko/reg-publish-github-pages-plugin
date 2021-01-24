@@ -20,28 +20,23 @@
     "prepublish": "tsc -p tsconfig.build.json",
     "clean:e2e": "rimraf e2e/report-fixture-expected",
     "lint": "eslint \"./{src,e2e}/**/*.{ts,tsx}\"",
-    "test": "npm run clean:e2e && ts-node e2e/script.ts",
-    "reg": "reg-suit run --verbose"
+    "test": "npm run clean:e2e && ts-node e2e/script.ts"
   },
   "dependencies": {
     "@octokit/rest": "^18.0.12",
     "download": "^8.0.0",
-    "isomorphic-git": "^1.8.0",
-    "reg-suit-util": "^0.10.10"
+    "isomorphic-git": "^1.8.0"
   },
   "devDependencies": {
     "@types/download": "^6.2.4",
     "@types/node": "14.14.21",
     "@typescript-eslint/eslint-plugin": "4.14.0",
     "@typescript-eslint/parser": "4.14.0",
-    "@lekoleko/reg-publish-github-pages-plugin": "./",
     "eslint": "7.18.0",
     "eslint-config-prettier": "7.2.0",
     "prettier": "2.2.1",
     "reg-suit-interface": "^0.10.10",
-    "reg-keygen-git-hash-plugin": "^0.10.12",
-    "reg-notify-github-plugin": "^0.10.12",
-    "reg-suit": "^0.10.12",
+    "reg-suit-util": "^0.10.10",
     "rimraf": "^3.0.2",
     "ts-node": "^9.1.1",
     "typescript": "4.1.3",
