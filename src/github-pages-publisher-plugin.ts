@@ -42,7 +42,7 @@ export class GithubPagesPublisherPlugin extends AbstractPublisher implements Pub
   }
 
   async publish(key: string) {
-    const reportUrl = `https://${this.getBaseUrl()}/${key}`;
+    const reportUrl = `https://${this.getBaseUrl()}/${key}/index.html`;
     this._repositoryDir = await fsPromise.mkdtemp(path.join(os.tmpdir(), "reg-publish-github-pages-plugin"));
 
     await this._gitUtil.clone({
