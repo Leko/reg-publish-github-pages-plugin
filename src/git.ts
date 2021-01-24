@@ -52,9 +52,10 @@ export class GitUtil {
     this._octokit = new Octokit({ auth: token });
   }
 
-  clone({ distDir }: { distDir: string }) {
-    return git.clone({
-      ...getIsomorphicGitOptions(this._token),
+  async clone({ distDir }: { distDir: string }) {
+    const repo = getIsomorphicGitOptions(this._token);
+    await git.clone({
+      ...repo,
       dir: distDir,
       ref: this._branchName,
       url: `https://github.com/${this._owner}/${this._repo}`,
@@ -64,6 +65,9 @@ export class GitUtil {
       noTags: true,
       noCheckout: true,
     });
+    // We need to run `git reset .` not to overwrite existing tree when we use --no-checkout.
+    const matrix = await git.statusMatrix({ fs, dir: distDir, ref: this._branchName, filepaths: ["."] });
+    await Promise.all(matrix.map(([filepath]) => git.resetIndex({ ...repo, dir: distDir, filepath })));
   }
 
   async add({ sourcePath, asPath, repositoryDir }: { sourcePath: string; asPath: string; repositoryDir: string }) {
