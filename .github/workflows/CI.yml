@@ -28,6 +28,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      # Workaround: reg-keygen-git-hash-plugin doesn't work with actions/checkout@v2
+      - run: git switch -c ${GITHUB_REF#refs/heads/}
       - uses: actions/setup-node@v2
         with:
           node-version: "14"
