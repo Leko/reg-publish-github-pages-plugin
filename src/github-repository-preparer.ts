@@ -15,40 +15,39 @@ export class GithubRepositoryPreparer implements PluginPreparer<SetupInquireResu
       {
         name: "repository",
         type: "input",
-        message: "Existing repository name ('owner/name')",
+        message: "GitHub repository name (ex. owner/name)",
+      },
+      {
+        name: "branchName",
+        type: "input",
+        message: "Branch name",
       },
       {
         name: "createOrphanBranch",
         type: "confirm",
-        message: "Create an orphan branch in the repository",
+        message: "Do you want to create branch in the repository?",
         default: true,
       },
       {
-        name: "branchName",
+        name: "token",
         type: "input",
-        message: "New branch name",
-        when: (ctx: any) => (ctx as { createOrphanBranch: boolean }).createOrphanBranch,
-      },
-      {
-        name: "branchName",
-        type: "input",
-        message: "Existing branch name",
-        when: (ctx: any) => !(ctx as { createOrphanBranch: boolean }).createOrphanBranch,
+        message: "GitHub access token",
       },
     ];
   }
 
   async prepare(config: PluginCreateOptions<SetupInquireResult>) {
     const { logger, options } = config;
+    const { createOrphanBranch, ...pluginConfig } = options;
     logger.verbose(
       JSON.stringify({
         ...options,
         token: "*".repeat(options.token.length) || "N/A",
       }),
     );
-    if (!options.createOrphanBranch) {
+    if (!createOrphanBranch) {
       logger.verbose("createOrphanBranch=false");
-      return { ...options, token: process.env.GITHUB_TOKEN! };
+      return pluginConfig;
     }
 
     logger.verbose(`createOrphanBranch=true`);
@@ -58,11 +57,10 @@ export class GithubRepositoryPreparer implements PluginPreparer<SetupInquireResu
       repo,
       logger,
       branchName: options.branchName,
-      // FIXME: How to receive the token
-      token: process.env.GITHUB_TOKEN!,
+      token: options.token,
     });
     await gitUtil.createOrphanBranchIfNotExists();
     logger.verbose("An orphan branch was created");
-    return { ...options, token: process.env.GITHUB_TOKEN! };
+    return pluginConfig;
   }
 }
