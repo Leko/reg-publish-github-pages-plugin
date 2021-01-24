@@ -1,8 +1,14 @@
 {
   "name": "@lekoleko/reg-publish-github-pages-plugin",
-  "version": "0.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "0.0.1",
   "description": "A reg-suit plugin to publish reports on GitHub pages",
   "main": "index.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "prepublish": "tsc -p tsconfig.build.json",
     "clean:e2e": "rimraf e2e/report-fixture-expected",
