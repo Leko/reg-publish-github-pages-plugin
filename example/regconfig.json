@@ -12,7 +12,7 @@
     "reg-notify-github-plugin": {
       "clientId": "$REG_NOTIFY_GITHUB_PLUGIN_CLIENT_ID"
     },
-    "@lekoleko/reg-publish-github-pages-plugin": {
+    "reg-publish-github-pages-plugin": {
       "repository": "Leko/reg-publish-github-pages-plugin",
       "branchName": "reg-working-demo",
       "token": "$GITHUB_TOKEN"
