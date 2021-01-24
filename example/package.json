@@ -8,6 +8,7 @@
   "author": "Leko <leko.noor@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@lekoleko/reg-publish-github-pages-plugin": "../",
     "reg-keygen-git-hash-plugin": "^0.10.12",
     "reg-notify-github-plugin": "^0.10.12",
     "reg-suit": "^0.10.12"
