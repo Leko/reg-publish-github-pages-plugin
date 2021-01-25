@@ -10,7 +10,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: "14"
-      - run: yarn
+      - run: yarn --frozen-lockfile
       - run: yarn lint
       - run: yarn prepublish
   test:
@@ -20,7 +20,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: "14"
-      - run: yarn
+      - run: yarn --frozen-lockfile
       - run: yarn test
         env:
           GITHUB_TOKEN: ${{ secrets.REG_NOTIFY_GITHUB_PLUGIN_GITHUB_TOKEN }}
@@ -35,8 +35,8 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: "14"
-      - run: yarn && yarn prepublish
-      - run: cd example && yarn && yarn reg
+      - run: yarn --frozen-lockfile && yarn prepublish
+      - run: cd example && yarn --frozen-lockfile && yarn reg
         env:
           GITHUB_TOKEN: ${{ secrets.REG_NOTIFY_GITHUB_PLUGIN_GITHUB_TOKEN }}
           REG_NOTIFY_GITHUB_PLUGIN_CLIENT_ID: ${{ secrets.REG_NOTIFY_GITHUB_PLUGIN_CLIENT_ID }}
