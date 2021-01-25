@@ -1,6 +1,15 @@
 # reg-publish-github-pages-plugin
 
+![version](https://img.shields.io/npm/v/reg-publish-github-pages-plugin)
+![LICENSE](https://img.shields.io/npm/l/reg-publish-github-pages-plugin)
+
 A reg-suit plugin to fetch and publish assets to the GitHub pages.
+
+## How it works
+
+![overview](./docs/overview.png)
+
+The plugin will create [orphan branch](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---orphanltnewbranchgt) when you run `reg-suit prepare -p publish-github-pages`. Then the plugin will commit report pages and images to the branch whenever you run `reg-suit run`. The branch has completely different tree from your branches. It doesn't affect any existing branches. So you can use it in the same repository you want to introduce reg-suit.
 
 ## Install
 
