@@ -49,7 +49,15 @@ export class GitUtil {
     this._token = token;
     this._logger = logger;
 
-    this._octokit = new Octokit({ auth: token });
+    this._octokit = new Octokit({
+      auth: token,
+      log: {
+        debug: msg => logger.verbose(msg),
+        info: msg => logger.info(msg),
+        warn: msg => logger.warn(msg),
+        error: msg => logger.error(msg),
+      },
+    });
   }
 
   async clone({ distDir }: { distDir: string }) {
@@ -88,19 +96,30 @@ export class GitUtil {
 
   async listRemoteFiles({ prefix }: { prefix: string }): Promise<ObjectListResult> {
     try {
-      const res = await this._octokit.request("GET /repos/{owner}/{repo}/contents/{path}", {
-        owner: this._owner,
-        repo: this._repo,
-        ref: this._branchName,
-        path: prefix,
-      });
-      if (!Array.isArray(res.data)) {
-        throw new Error(`${prefix} must be a directory`);
+      const open: string[] = [prefix];
+      const result = [];
+      while (open.length) {
+        const prefix = open.pop()!;
+        this._logger.verbose(`${prefix}: Visit`);
+        const res = await this._octokit.request("GET /repos/{owner}/{repo}/contents/{path}", {
+          owner: this._owner,
+          repo: this._repo,
+          ref: this._branchName,
+          path: prefix,
+        });
+        if (!Array.isArray(res.data)) {
+          throw new Error(`${prefix} must be a directory`);
+        }
+        const nextPaths = res.data.filter(f => f.type === "dir").map(f => f.path);
+        const files = res.data.filter(f => f.type === "file");
+        this._logger.verbose(`${prefix}: ${files.length} files and ${nextPaths} folders are found`);
+        open.push(...nextPaths);
+        result.push(...files);
       }
 
       return {
         isTruncated: false,
-        contents: res.data
+        contents: result
           .filter(f => f.type === "file")
           .map(f => ({
             key: f.path,
