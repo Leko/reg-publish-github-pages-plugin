@@ -49,7 +49,15 @@ export class GitUtil {
     this._token = token;
     this._logger = logger;
 
-    this._octokit = new Octokit({ auth: token });
+    this._octokit = new Octokit({
+      auth: token,
+      log: {
+        debug: msg => logger.verbose(msg),
+        info: msg => logger.info(msg),
+        warn: msg => logger.warn(msg),
+        error: msg => logger.error(msg),
+      },
+    });
   }
 
   async clone({ distDir }: { distDir: string }) {

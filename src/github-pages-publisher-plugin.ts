@@ -106,7 +106,9 @@ export class GithubPagesPublisherPlugin extends AbstractPublisher implements Pub
 
   protected async listItems(_lastKey: string, prefix: string): Promise<ObjectListResult> {
     this.logger.verbose(
-      `Listing files on the repository: ${this._pluginConfig.repository} (${this._pluginConfig.branchName})`,
+      `Listing files on the repository: ${this._pluginConfig.repository} (${
+        this._pluginConfig.branchName
+      }), prefix=${JSON.stringify(prefix)}`,
     );
     const result = await this._gitUtil.listRemoteFiles({
       prefix,
