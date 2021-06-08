@@ -2716,12 +2716,13 @@ reg-gh-app-interface@^1.1.0:
   resolved "https://registry.yarnpkg.com/reg-gh-app-interface/-/reg-gh-app-interface-1.1.0.tgz#a71c80acad06944d21fa5d4fb3d1bf7545a8eb42"
   integrity sha512-hTUJVbmV/67xdqXE+Z/vFpoo+1QdNlQDcrynlKc3d+7mY2trff3n70ETOwhtrxMwSzLxtCTcnHRSIqMeW4AnaQ==
 
-reg-keygen-git-hash-plugin@^0.10.12:
-  version "0.10.12"
-  resolved "https://registry.yarnpkg.com/reg-keygen-git-hash-plugin/-/reg-keygen-git-hash-plugin-0.10.12.tgz#5a9f2dadd5c78e487e74f4b8873fc008c4084780"
-  integrity sha512-Lk89ZpcjG6JPhnN+wo9a9jYHR4GpvoE/hD95L45l/zrpK0VMqpx80zLT3Uo/5EgpS3BAyy0ZEN0qEzc+77Xiag==
+reg-keygen-git-hash-plugin@^0.10.16:
+  version "0.10.16"
+  resolved "https://registry.yarnpkg.com/reg-keygen-git-hash-plugin/-/reg-keygen-git-hash-plugin-0.10.16.tgz#80ad60b2a5957c51b0766a815bec7f2a27a3adff"
+  integrity sha512-N3ma/KICzzyNOAn6GTjmMorAUntdBr3wsucEeMt/ts/KdMuzgyr9kuxamjVCA/n+/Lc/uOq8MnhxdKRSFUbodg==
   dependencies:
-    reg-suit-util "^0.10.10"
+    reg-suit-util "^0.10.16"
+    shell-escape "^0.2.0"
 
 reg-notify-github-plugin@^0.10.12:
   version "0.10.12"
@@ -2736,7 +2737,7 @@ reg-notify-github-plugin@^0.10.12:
     tiny-commit-walker "^1.1.2"
 
 reg-publish-github-pages-plugin@../:
-  version "0.0.2"
+  version "0.0.6-0"
   dependencies:
     "@octokit/rest" "^18.0.12"
     download "^8.0.0"
@@ -2752,10 +2753,10 @@ reg-suit-core@^0.10.12:
     reg-suit-util "^0.10.10"
     rimraf "^3.0.2"
 
-reg-suit-util@^0.10.10:
-  version "0.10.10"
-  resolved "https://registry.yarnpkg.com/reg-suit-util/-/reg-suit-util-0.10.10.tgz#0a710fa32305d464285de9208a5d0c034ac1d194"
-  integrity sha512-LkWJqJI3zlolm1Bd/Rvhi2IKE2NpVnvtMBWQy0j2lt1C/3MfpReB8g2rsRxUw58MIH2KwKBUWRlMKReKCiUApw==
+reg-suit-util@^0.10.10, reg-suit-util@^0.10.16:
+  version "0.10.16"
+  resolved "https://registry.yarnpkg.com/reg-suit-util/-/reg-suit-util-0.10.16.tgz#958028ab74a7968fcc69c350c1906353c7fdc550"
+  integrity sha512-Ul5SqlIgEoO/RU5FkQkj2E6vwHzldvINg5YIbwUQ4KIIHmiXCvyHRNj1mdUMYuGaGRGfET/NwuLOyvYfinCzOA==
   dependencies:
     "@types/cli-progress" "^3.8.0"
     "@types/cli-spinner" "^0.2.0"
@@ -3003,6 +3004,11 @@ shebang-regex@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-3.0.0.tgz#ae16f1644d873ecad843b0307b143362d4c42172"
   integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
+
+shell-escape@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/shell-escape/-/shell-escape-0.2.0.tgz#68fd025eb0490b4f567a027f0bf22480b5f84133"
+  integrity sha1-aP0CXrBJC09WegJ/C/IkgLX4QTM=
 
 shell-quote@^1.6.1:
   version "1.7.2"

@@ -9,7 +9,7 @@
   "license": "MIT",
   "devDependencies": {
     "reg-publish-github-pages-plugin": "../",
-    "reg-keygen-git-hash-plugin": "^0.10.12",
+    "reg-keygen-git-hash-plugin": "^0.10.16",
     "reg-notify-github-plugin": "^0.10.12",
     "reg-suit": "^0.10.12"
   }
